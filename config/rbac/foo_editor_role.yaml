@@ -1,0 +1,31 @@
+# permissions for end users to edit foos.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: clusterrole
+    app.kubernetes.io/instance: foo-editor-role
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: kubebuilderexample
+    app.kubernetes.io/part-of: kubebuilderexample
+    app.kubernetes.io/managed-by: kustomize
+  name: foo-editor-role
+rules:
+- apiGroups:
+  - samplecontroller.zhaohuabing.com
+  resources:
+  - foos
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - samplecontroller.zhaohuabing.com
+  resources:
+  - foos/status
+  verbs:
+  - get

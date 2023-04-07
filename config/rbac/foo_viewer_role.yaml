@@ -1,0 +1,27 @@
+# permissions for end users to view foos.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: clusterrole
+    app.kubernetes.io/instance: foo-viewer-role
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: kubebuilderexample
+    app.kubernetes.io/part-of: kubebuilderexample
+    app.kubernetes.io/managed-by: kustomize
+  name: foo-viewer-role
+rules:
+- apiGroups:
+  - samplecontroller.zhaohuabing.com
+  resources:
+  - foos
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - samplecontroller.zhaohuabing.com
+  resources:
+  - foos/status
+  verbs:
+  - get
